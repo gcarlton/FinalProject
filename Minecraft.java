@@ -21,8 +21,8 @@ public class Minecraft
       
       System.out.println("Difficulty Options: Easy Medium Hard");
       System.out.println("Pick your Difficulty");
-      try{String Dif = input.next();
-      if(Dif.equals("Easy") || Dif.equals("Medium") || Dif.equals("Hard")){
+      try{String Dif = input.nextLine();
+      if(Dif.equalsIgnoreCase("Easy") || Dif.equalsIgnoreCase("Medium") || Dif.equalsIgnoreCase("Hard")){
           System.out.println(Dif);
       }else{
           throw new IllegalArgumentException("No such difficulty restart program");
@@ -33,12 +33,12 @@ public class Minecraft
       System.out.println("This is the statistics of the swords and armor");
       ArrayList<MinecraftSword> sword = new ArrayList<MinecraftSword>();
       addSwordtolist(sword);
-      for(int i = 0; i < sword.size(); i++){
+    for(int i = 0; i < sword.size(); i++){
           System.out.println(sword.get(i).getSwordinfo());
         }
           ArrayList<MinecraftArmor> armor = new ArrayList<MinecraftArmor>();
           addArmortolist(armor);
-          for(int i = 0; i < armor.size(); i++){
+    for(int i = 0; i < armor.size(); i++){
               System.out.println(armor.get(i).getArmorRes());
           }
       String[] Swords = new String[5];
@@ -55,56 +55,70 @@ public class Minecraft
       Armor[4] = "Diamond";
       System.out.println("A Skeleton has Spawned, this mob does 2 damage, and 3 hearts choose wisely");
       System.out.println("Pick your armor");
-      String Armor1 = input.next();
+      String Armor1 = input.nextLine();
       boolean wrongpick = false;
-      while (!wrongpick){
+      
       for(int i = 0; i < Armor.length; i++){
           
-          if(Armor1.equals(Armor[2]) || Armor1.equals(Armor[3]) || Armor1.equals(Armor[4])){
-              System.out.println("Onto the next mob");
+          if(Armor1.equalsIgnoreCase(Armor[2]) || Armor1.equalsIgnoreCase(Armor[3]) || Armor1.equalsIgnoreCase(Armor[4])){
+              
+              System.out.println("Onto the Sword");
           wrongpick = true;
-          }else{
+        }else{
+              while(!wrongpick){
               System.out.println( "Game restarting");
           }
       }
+    }
     
+
       System.out.println("Pick your sword");
-      String Sword1 = input.next();
-      
+      String Sword1 = input.nextLine();
+     
       for(int i = 0; i < Swords.length; i++){
-          if(Sword1.equals(Swords[2]) || Sword1.equals(Swords[3]) || Sword1.equals(Swords[4])){
+          if(Sword1.equalsIgnoreCase(Swords[2]) || Sword1.equalsIgnoreCase(Swords[3]) || Sword1.equalsIgnoreCase(Swords[4])){
+              
               System.out.println("Onto the next mob");
               wrongpick = true;
           }else{
+              while(wrongpick){
               System.out.println( "Game restarting");
       }
     }
     }
-    System.out.println("A Zombie has Spawned, this mob does 1 damage, and has 2 hearts, choose wisely");
+    
+        System.out.println("A Zombie has Spawned, this mob does 1 damage, and has 2 hearts, choose wisely");
     System.out.println("Pick your armor");
-    String Armor2 = input.next();
+    String Armor2 = input.nextLine();
       
-      for(int i = 0; i < Armor.length; i++){
+      for(int j = 0; j < Armor.length; j++){
           
-          if(Armor2.equals(Armor[1]) || Armor2.equals(Armor[2]) || Armor2.equals(Armor[3]) || Armor2.equals(Armor[4])){
-              System.out.println("Onto the next mob");
+          if(Armor2.equalsIgnoreCase(Armor[1]) || Armor2.equalsIgnoreCase(Armor[2]) || Armor2.equalsIgnoreCase(Armor[3]) || Armor2.equalsIgnoreCase(Armor[4])){
+              System.out.println("Onto the sword");
               wrongpick = true;
           }else{
+              while(wrongpick){
               System.out.println( "Game restarting");
           }
       }
+    }
+    
     
         System.out.println("Pick your sword");
-      String Sword2 = input.next();
+      String Sword2 = input.nextLine();
       
-      for(int i = 0; i < Swords.length; i++){
-          if(Sword2.equals(Swords[1]) || Sword2.equals(Swords[2]) || Sword2.equals(Swords[3]) || Sword2.equals(Swords[4])){
+      for(int a = 0; a < Swords.length; a++){
+        
+          if(Sword2.equalsIgnoreCase(Swords[1]) || Sword2.equalsIgnoreCase(Swords[2]) || Sword2.equalsIgnoreCase(Swords[3]) || Sword2.equalsIgnoreCase(Swords[4])){
               System.out.println("Onto the next mob");
               wrongpick = true;
           }else{
+              while(wrongpick){
               System.out.println( "Game restarting");
       }
     }
+    }
+    
     
     System.out.println("A EnderDragon Spawned");
     System.out.println("Hint: You can only use Netherite armor or sword");
@@ -113,7 +127,7 @@ public class Minecraft
             System.out.println(n);
         }
         System.out.println("Please enter one of the above Netherites: ");
-        String netherite = input.next();
+        String netherite = input.nextLine();
         Netherite answer = Netherite.valueOf(netherite.toUpperCase());
          if (answer != null) {
             System.out.println(answer);
@@ -121,15 +135,19 @@ public class Minecraft
             System.out.println(Netherite.UNKNOWN);
         }
         
-        if(netherite.equals("ARMOR") || netherite.equals("SWORD")){
+        if(netherite.equalsIgnoreCase("ARMOR") || netherite.equalsIgnoreCase("SWORD")){
             System.out.println("Congrats Game Finished");
             wrongpick = true;
         }else{
+            while(wrongpick){
             System.out.println( "Game restarting");
         }
-    }
-
     
+    }   
+}
+
+
+   
 /**
      * This method adds MinecraftSwords to a list.
      *
